@@ -2,6 +2,10 @@ import { OrbitControls, Stats } from "@react-three/drei";
 import { useControls } from "leva";
 
 import Cube from "./components/Cube";
+import ClockAnalogue from "./components/Clock/Analogue";
+import ClockDigital from "./components/Clock/Digital";
+
+const components = ["Cube", "ClockAnalogue", "ClockDigital"];
 
 const Content = () => {
   const { showStats } = useControls("General", {
@@ -11,16 +15,28 @@ const Content = () => {
     },
   });
 
-  const { showAxesHelper, showGridHelper } = useControls("Helpers", {
-    showAxesHelper: {
-      label: "Axes Helper",
-      value: false,
+  const { showAxesHelper, showGridHelper, useComponent } = useControls(
+    "Helpers",
+    {
+      showAxesHelper: {
+        label: "Axes Helper",
+        value: false,
+      },
+      showGridHelper: {
+        label: "Grid Helper",
+        value: false,
+      },
+      useComponent: {
+        label: "Component",
+        options: components,
+        value: "Cube",
+      },
     },
-    showGridHelper: {
-      label: "Grid Helper",
-      value: false,
-    },
-  });
+  );
+
+  function showComponent(name) {
+    return useComponent === name;
+  }
 
   return (
     <>
@@ -28,7 +44,9 @@ const Content = () => {
       {showAxesHelper && <axesHelper />}
       {showGridHelper && <gridHelper />}
       {showStats && <Stats />}
-      <Cube />
+      {showComponent("Cube") && <Cube />}
+      {showComponent("ClockAnalogue") && <ClockAnalogue />}
+      {showComponent("ClockDigital") && <ClockDigital />}
     </>
   );
 };
