@@ -25,6 +25,14 @@ const LoremIpsum = () => {
         Lorem ipsum sid dolor amet.
         <meshBasicMaterial color={0x0000ff} />
       </Text>
+      <Text fontSize={1} font={FontFamily.Lukiest_Guy} position={[0, -2, 0]}>
+        Lorem ipsum sid dolor amet.
+        <meshBasicMaterial color={0x00ff00} />
+      </Text>
+      <Text fontSize={1} font={FontFamily.Crimson_Pro} position={[0, -3, 0]}>
+        Lorem ipsum sid dolor amet.
+        <meshBasicMaterial color={0xff0000} side={DoubleSide} />
+      </Text>
     </>
   );
 };
