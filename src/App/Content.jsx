@@ -8,6 +8,9 @@ import ClockDigital from "./components/Clock/Digital";
 import Lighting from "./components/Lighting";
 import Suzanne from "./components/Suzanne";
 import SuzanneMatcapTexture from "./components/Suzanne/MatcapTexture";
+import SuzanneNormalTexture from "./components/Suzanne/NormalTexture";
+import SuzanneStandardMaterial from "./components/Suzanne/StandardMaterial";
+import SuzanneToonMaterial from "./components/Suzanne/ToonMaterial";
 
 const components = [
   "Cube",
@@ -15,6 +18,9 @@ const components = [
   "ClockDigital",
   "Suzanne",
   "SuzanneMatcapTexture",
+  "SuzanneNormalTexture",
+  "SuzanneStandardMaterial",
+  "SuzanneToonMaterial",
 ];
 
 const Content = () => {
@@ -61,6 +67,11 @@ const Content = () => {
       <Suspense fallback={null}>
         {showComponent("Suzanne") && <Suzanne />}
         {showComponent("SuzanneMatcapTexture") && <SuzanneMatcapTexture />}
+        {showComponent("SuzanneNormalTexture") && <SuzanneNormalTexture />}
+        {showComponent("SuzanneStandardMaterial") && (
+          <SuzanneStandardMaterial />
+        )}
+        {showComponent("SuzanneToonMaterial") && <SuzanneToonMaterial />}
       </Suspense>
     </>
   );
