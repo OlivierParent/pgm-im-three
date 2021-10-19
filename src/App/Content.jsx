@@ -1,11 +1,21 @@
+import { Suspense } from "react";
 import { OrbitControls, Stats } from "@react-three/drei";
 import { useControls } from "leva";
 
 import Cube from "./components/Cube";
 import ClockAnalogue from "./components/Clock/Analogue";
 import ClockDigital from "./components/Clock/Digital";
+import Lighting from "./components/Lighting";
+import Suzanne from "./components/Suzanne";
+import SuzanneMatcapTexture from "./components/Suzanne/MatcapTexture";
 
-const components = ["Cube", "ClockAnalogue", "ClockDigital"];
+const components = [
+  "Cube",
+  "ClockAnalogue",
+  "ClockDigital",
+  "Suzanne",
+  "SuzanneMatcapTexture",
+];
 
 const Content = () => {
   const { showStats } = useControls("General", {
@@ -44,9 +54,14 @@ const Content = () => {
       {showAxesHelper && <axesHelper />}
       {showGridHelper && <gridHelper />}
       {showStats && <Stats />}
+      <Lighting />
       {showComponent("Cube") && <Cube />}
       {showComponent("ClockAnalogue") && <ClockAnalogue />}
       {showComponent("ClockDigital") && <ClockDigital />}
+      <Suspense fallback={null}>
+        {showComponent("Suzanne") && <Suzanne />}
+        {showComponent("SuzanneMatcapTexture") && <SuzanneMatcapTexture />}
+      </Suspense>
     </>
   );
 };
