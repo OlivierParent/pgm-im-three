@@ -6,6 +6,11 @@ import Cube from "./components/Cube";
 import ClockAnalogue from "./components/Clock/Analogue";
 import ClockDigital from "./components/Clock/Digital";
 import Lighting from "./components/Lighting";
+import LightingGui from "./components/Lighting/indexGui";
+import LightingStudio from "./components/Lighting/Studio";
+import LightingStudioGui from "./components/Lighting/StudioGui";
+import LightingThreePoint from "./components/Lighting/ThreePoint";
+import LightingThreePointGui from "./components/Lighting/ThreePointGui";
 import LoremIpsum from "./components/LoremIpsum";
 import Suzanne from "./components/Suzanne";
 import SuzanneMatcapTexture from "./components/Suzanne/MatcapTexture";
@@ -25,6 +30,15 @@ const components = [
   "SuzanneToonMaterial",
 ];
 
+const lightings = [
+  "Lighting",
+  "LightingGui",
+  "LightingStudio",
+  "LightingStudioGui",
+  "LightingThreePoint",
+  "LightingThreePointGui",
+];
+
 const Content = () => {
   const { showStats } = useControls("General", {
     showStats: {
@@ -33,9 +47,8 @@ const Content = () => {
     },
   });
 
-  const { showAxesHelper, showGridHelper, useComponent } = useControls(
-    "Helpers",
-    {
+  const { showAxesHelper, showGridHelper, useComponent, useLighting } =
+    useControls("Helpers", {
       showAxesHelper: {
         label: "Axes Helper",
         value: false,
@@ -49,11 +62,19 @@ const Content = () => {
         options: components,
         value: "Cube",
       },
-    },
-  );
+      useLighting: {
+        label: "Lighting",
+        options: lightings,
+        value: "LightingStudio",
+      },
+    });
 
   function showComponent(name) {
     return useComponent === name;
+  }
+
+  function showLighting(name) {
+    return useLighting === name;
   }
 
   return (
@@ -62,7 +83,12 @@ const Content = () => {
       {showAxesHelper && <axesHelper />}
       {showGridHelper && <gridHelper />}
       {showStats && <Stats />}
-      <Lighting />
+      {showLighting("Lighting") && <Lighting />}
+      {showLighting("LightingGui") && <LightingGui />}
+      {showLighting("LightingStudio") && <LightingStudio />}
+      {showLighting("LightingStudioGui") && <LightingStudioGui />}
+      {showLighting("LightingThreePoint") && <LightingThreePoint />}
+      {showLighting("LightingThreePointGui") && <LightingThreePointGui />}
       {showComponent("Cube") && <Cube />}
       {showComponent("ClockAnalogue") && <ClockAnalogue />}
       {showComponent("ClockDigital") && <ClockDigital />}
