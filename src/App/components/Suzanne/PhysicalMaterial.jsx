@@ -4,7 +4,7 @@ import { useControls } from "leva";
 
 import suzanneGlb from "./assets/suzanne.glb";
 
-const SuzanneStandardMaterial = () => {
+const SuzannePhysicalMaterial = () => {
   const { nodes } = useGLTF(suzanneGlb, true);
 
   const { dithering, opacity, transparent } = useControls("Material", {
@@ -41,19 +41,66 @@ const SuzanneStandardMaterial = () => {
     wireframe: { label: "Wireframe", value: false },
   });
 
+  const {
+    clearcoat,
+    clearcoatRoughness,
+    ior,
+    reflectivity,
+    sheen,
+    sheenRoughness,
+    sheenTint,
+    specularIntensity,
+    specularTint,
+    thickness,
+    transmission,
+  } = useControls("Physical Material", {
+    clearcoat: { label: "Clearcoat", max: 1, min: 0, value: 0 },
+    clearcoatRoughness: {
+      label: "Clearcoat Roughness",
+      max: 1,
+      min: 0,
+      value: 0,
+    },
+    ior: { label: "Index of Refraction", max: 2.333, min: 1, value: 1.5 },
+    reflectivity: { label: "Reflectivity", max: 1, min: 0, value: 0.5 },
+    sheen: { label: "Sheen", max: 1, min: 0, value: 0 },
+    sheenRoughness: { label: "Sheen Roughness", max: 1, min: 0, value: 1 },
+    sheenTint: { label: "Sheen Tint", value: "#ffffff" },
+    specularIntensity: {
+      label: "Specular Intensity",
+      max: 1,
+      min: 0,
+      value: 1,
+    },
+    specularTint: { label: "Specular Tint", value: "#ffffff" },
+    thickness: { label: "Thickness", max: 10, min: 0, value: 0.01 },
+    transmission: { label: "Transmission", max: 1, min: 0, value: 0 },
+  });
+
   return (
     <group>
       <mesh geometry={nodes.Suzanne.geometry}>
-        <meshStandardMaterial
+        <meshPhysicalMaterial
           color={color}
+          clearcoat={clearcoat}
+          clearcoatRoughness={clearcoatRoughness}
           emissive={emissive}
           emissiveIntensity={emissiveIntensity}
           dithering={dithering}
+          ior={ior}
           metalness={metalness}
           opacity={opacity}
+          reflectivity={reflectivity}
           refractionRatio={refractionRatio}
           roughness={roughness}
           transparent={transparent}
+          sheen={sheen}
+          sheenRoughness={sheenRoughness}
+          sheenTint={sheenTint}
+          specularIntensity={specularIntensity}
+          specularTint={specularTint}
+          thickness={thickness}
+          transmission={transmission}
           wireframe={wireframe}
         />
       </mesh>
@@ -66,4 +113,4 @@ const SuzanneStandardMaterial = () => {
   );
 };
 
-export default SuzanneStandardMaterial;
+export default SuzannePhysicalMaterial;

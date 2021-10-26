@@ -15,6 +15,7 @@ import LoremIpsum from "./components/LoremIpsum";
 import Suzanne from "./components/Suzanne";
 import SuzanneMatcapTexture from "./components/Suzanne/MatcapTexture";
 import SuzanneNormalTexture from "./components/Suzanne/NormalTexture";
+import SuzannePhysicalMaterial from "./components/Suzanne/PhysicalMaterial";
 import SuzanneStandardMaterial from "./components/Suzanne/StandardMaterial";
 import SuzanneToonMaterial from "./components/Suzanne/ToonMaterial";
 
@@ -26,6 +27,7 @@ const components = [
   "Suzanne",
   "SuzanneMatcapTexture",
   "SuzanneNormalTexture",
+  "SuzannePhysicalMaterial",
   "SuzanneStandardMaterial",
   "SuzanneToonMaterial",
 ];
@@ -97,6 +99,9 @@ const Content = () => {
         {showComponent("Suzanne") && <Suzanne />}
         {showComponent("SuzanneMatcapTexture") && <SuzanneMatcapTexture />}
         {showComponent("SuzanneNormalTexture") && <SuzanneNormalTexture />}
+        {showComponent("SuzannePhysicalMaterial") && (
+          <SuzannePhysicalMaterial />
+        )}
         {showComponent("SuzanneStandardMaterial") && (
           <SuzanneStandardMaterial />
         )}
