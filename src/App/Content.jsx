@@ -5,6 +5,7 @@ import { useControls } from "leva";
 import Cube from "./components/Cube";
 import ClockAnalogue from "./components/Clock/Analogue";
 import ClockDigital from "./components/Clock/Digital";
+import ImageSvg from "./components/Image/Svg";
 import Lighting from "./components/Lighting";
 import LightingGui from "./components/Lighting/indexGui";
 import LightingStudio from "./components/Lighting/Studio";
@@ -23,6 +24,7 @@ const components = [
   "Cube",
   "ClockAnalogue",
   "ClockDigital",
+  "ImageSvg",
   "LoremIpsum",
   "Suzanne",
   "SuzanneMatcapTexture",
@@ -85,6 +87,7 @@ const Content = () => {
       {showAxesHelper && <axesHelper />}
       {showGridHelper && <gridHelper />}
       {showStats && <Stats />}
+
       {showLighting("Lighting") && <Lighting />}
       {showLighting("LightingGui") && <LightingGui />}
       {showLighting("LightingStudio") && <LightingStudio />}
@@ -95,6 +98,7 @@ const Content = () => {
       {showComponent("ClockAnalogue") && <ClockAnalogue />}
       {showComponent("ClockDigital") && <ClockDigital />}
       <Suspense fallback={null}>
+        {showComponent("ImageSvg") && <ImageSvg />}
         {showComponent("LoremIpsum") && <LoremIpsum />}
         {showComponent("Suzanne") && <Suzanne />}
         {showComponent("SuzanneMatcapTexture") && <SuzanneMatcapTexture />}

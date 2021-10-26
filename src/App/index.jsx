@@ -3,7 +3,7 @@ import Content from "./Content";
 
 const App = () => {
   return (
-    <Canvas>
+    <Canvas linear={true}>
       <Content />
     </Canvas>
   );
