@@ -2,18 +2,13 @@ import { Suspense } from "react";
 import { OrbitControls, Stats } from "@react-three/drei";
 import { useControls } from "leva";
 
+// Components
 import Animation from "./components/Animation";
 import Cube from "./components/Cube";
 import ClockAnalogue from "./components/Clock/Analogue";
 import ClockDigital from "./components/Clock/Digital";
 import Image from "./components/Image";
 import ImageSvg from "./components/Image/Svg";
-import Lighting from "./components/Lighting";
-import LightingGui from "./components/Lighting/indexGui";
-import LightingStudio from "./components/Lighting/Studio";
-import LightingStudioGui from "./components/Lighting/StudioGui";
-import LightingThreePoint from "./components/Lighting/ThreePoint";
-import LightingThreePointGui from "./components/Lighting/ThreePointGui";
 import LoremIpsum from "./components/LoremIpsum";
 import Normals from "./components/Normals";
 import Suzanne from "./components/Suzanne";
@@ -22,6 +17,14 @@ import SuzanneNormalTexture from "./components/Suzanne/NormalTexture";
 import SuzannePhysicalMaterial from "./components/Suzanne/PhysicalMaterial";
 import SuzanneStandardMaterial from "./components/Suzanne/StandardMaterial";
 import SuzanneToonMaterial from "./components/Suzanne/ToonMaterial";
+
+// Lighting
+import Lighting from "./components/Lighting";
+import LightingGui from "./components/Lighting/indexGui";
+import LightingStudio from "./components/Lighting/Studio";
+import LightingStudioGui from "./components/Lighting/StudioGui";
+import LightingThreePoint from "./components/Lighting/ThreePoint";
+import LightingThreePointGui from "./components/Lighting/ThreePointGui";
 
 const components = [
   "Animation",
